@@ -1,0 +1,4 @@
+interface:
+  display_name: "APITrace SDK Maintainer"
+  short_description: "Maintain the Swift and Kotlin APITrace SDKs with parity and doc discipline"
+  default_prompt: "Update this repository while preserving cross-platform APITrace semantics, documenting public changes, and validating the Swift package."

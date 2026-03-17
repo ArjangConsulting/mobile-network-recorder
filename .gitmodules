@@ -1,0 +1,6 @@
+[submodule "ios"]
+	path = ios
+	url = git@github.com:ArjangConsulting/ios-network-recorder.git
+[submodule "android"]
+	path = android
+	url = git@github.com:ArjangConsulting/android-network-recorder.git
