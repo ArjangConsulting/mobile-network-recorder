@@ -30,7 +30,11 @@ This file is the canonical agent guide for the container repo. It focuses on cro
 ## Working Rules
 
 - Treat capture behavior as a cross-platform contract. If a change affects redaction, capture lifecycle, exported records, or bootstrap/install behavior, inspect both the Swift and Kotlin implementations.
-- Keep semantic parity, not forced textual parity. Current intentional difference: iOS exports `startedAt` as ISO 8601, while Android exports `startedAtEpochMs` as epoch milliseconds.
+- Keep semantic parity, not forced textual parity. Current intentional differences:
+  - iOS exports `startedAt` as ISO 8601, while Android exports `startedAtEpochMs` as epoch milliseconds.
+  - iOS records one record per redirect hop (URLProtocol re-dispatches redirects through the app's session); Android records one record per call with the final response (application interceptor, redirects followed inside OkHttp).
+  - Android's debug backend refuses `start()` in non-debuggable builds (`allowInNonDebuggableBuilds` opts in); iOS relies on the `#if DEBUG` module split at the app level.
+  - iOS needs `enableCapture(in:)` for custom `URLSessionConfiguration`s; Android capture follows the OkHttp client the interceptor is installed on.
 - Keep the module mapping aligned:
   - `APITraceCore` <-> `api-trace-core`
   - `APITraceDebug` <-> `api-trace-debug`
@@ -60,7 +64,7 @@ This file is the canonical agent guide for the container repo. It focuses on cro
 ## Testing Expectations
 
 - Keep or expand Swift tests when changing core redaction or record modeling behavior.
-- Android currently has no committed tests. If you add non-trivial Kotlin logic, prefer adding tests instead of relying only on manual review.
+- Android has JUnit tests in `api-trace-core` and `api-trace-debug` (MockWebServer-based). Keep or expand them when changing capture or export behavior.
 
 ## Skills
 
