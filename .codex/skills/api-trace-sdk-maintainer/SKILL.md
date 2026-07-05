@@ -24,7 +24,7 @@ Use this skill when work touches:
    - `APITraceNoop` <-> `api-trace-noop`
 3. Preserve semantic parity.
    - Keep capture lifecycle, redaction rules, and request/response modeling aligned.
-   - Respect existing intentional divergence: iOS serializes `startedAt` as ISO 8601, Android serializes `startedAtEpochMs` as epoch milliseconds.
+   - Both platforms serialize `startedAt` as ISO 8601 with millisecond precision; keep that wire format identical.
 4. Commit in submodules first.
    - Make changes inside the `ios/` or `android/` submodule directory.
    - Commit and push in the submodule.

@@ -22,8 +22,7 @@ Paths are relative to each submodule root (`ios/` for Swift, `android/` for Kotl
 
 ## Known Intentional Differences
 
-- iOS exports `startedAt` as an ISO 8601 date string.
-- Android exports `startedAtEpochMs` as epoch milliseconds.
+- Both platforms export `startedAt` as an ISO 8601 date string with millisecond precision; internally Swift stores a `Date` while Kotlin stores epoch milliseconds (`startedAtEpochMs`).
 - iOS export API is `exportJSON(prettyPrinted:)`.
 - Android export API is `exportJson(pretty)`.
 
