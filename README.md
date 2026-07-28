@@ -13,7 +13,9 @@ Each SDK lives in its own standalone repository and is included here as a Git su
 
 ## Purpose
 
-These SDKs capture sanitized request/response traffic from mobile apps so the exported payload can later be ingested by `moqserver` or other tooling.
+These SDKs capture sanitized request/response traffic from mobile apps so the exported payload can
+later be ingested by `moqserver` or other tooling. Both core modules also expose
+`APITraceConsoleFormatter` for readable, indented logging of sanitized records.
 
 ## Clone
 
