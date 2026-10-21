@@ -1,7 +1,3 @@
-# Note: /ios and /android are separate submodule repos, so their swift/gradle
-# dependency updates are configured in their own .github/dependabot.yml files
-# (ios/.github/dependabot.yml, android/.github/dependabot.yml). This container
-# repo only has its own GitHub Actions workflows to keep current.
 version: 2
 updates:
   - package-ecosystem: github-actions
@@ -10,6 +6,7 @@ updates:
       interval: weekly
       day: monday
     groups:
-      github-actions:
+      dependencies:
         patterns:
-          - "*"
+          - '*'
+    open-pull-requests-limit: 1
