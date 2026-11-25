@@ -17,6 +17,22 @@ These SDKs capture sanitized request/response traffic from mobile apps so the ex
 later be ingested by `moqserver` or other tooling. Both core modules also expose
 `APITraceConsoleFormatter` for readable, indented logging of sanitized records.
 
+Both SDKs apply credential redaction before storing trace history or exporting HAR. Use
+the same `redact` names and exceptions in your app and mock bundle:
+
+```yaml
+redact:
+  headers: [X-App-Device]
+  query_parameters: [device_ref]
+  except:
+    headers: [X-CSRF-Token]
+    query_parameters: [token]
+```
+
+See [Swift configuration](ios/README.md#credential-redaction) and
+[Kotlin configuration](android/README.md#credential-redaction). Exceptions preserve the
+original value, even a JWT. Only except names you know are safe to share.
+
 ## Clone
 
 ```bash
